@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { Bot, webhookCallback } from "grammy";
 import express from "express";
 
