@@ -1,7 +1,6 @@
 {
   "name": "forward_bot",
   "description": "Forwards bot from a channel to group",
-  "type": "module",
   "scripts": {
     "start": "node api/app.js"
   },
