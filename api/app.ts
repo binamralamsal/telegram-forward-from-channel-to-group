@@ -1,6 +1,5 @@
 import { Bot, webhookCallback } from "grammy";
 import express from "express";
-import bodyParser from "body-parser";
 
 const { BOT_TOKEN, CHANNEL_ID, GROUP_ID } = process.env;
 
@@ -27,7 +26,7 @@ bot.on("channel_post", async (ctx) => {
 });
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(webhookCallback(bot, "express"));
 
 app.get("/", (req, res) => {
