@@ -1,9 +1,11 @@
-import { Bot } from "grammy";
+import { Bot, webhookCallback } from "grammy";
+import express from "express";
+import bodyParser from "body-parser";
 
 const { BOT_TOKEN, CHANNEL_ID, GROUP_ID } = process.env;
 
 if (!BOT_TOKEN || !CHANNEL_ID || !GROUP_ID) {
-  console.error("BOT_TOKEN, CHANNEL_ID and GROUP_ID must be filled");
+  console.error("BOT_TOKEN, CHANNEL_ID, and GROUP_ID must be filled");
   process.exit(1);
 }
 
@@ -24,6 +26,12 @@ bot.on("channel_post", async (ctx) => {
   }
 });
 
-bot.start({
-  onStart: () => console.log("Bot is running 🔥"),
+const app = express();
+app.use(bodyParser.json());
+app.use(webhookCallback(bot, "express"));
+
+app.get("/", (req, res) => {
+  res.send("Bot is running!");
 });
+
+export default app;
