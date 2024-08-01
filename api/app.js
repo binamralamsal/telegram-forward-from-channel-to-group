@@ -1,7 +1,7 @@
 import "dotenv/config";
 
 import { Bot, webhookCallback } from "grammy";
-import express, { type Request, type Response } from "express";
+import express from "express";
 
 const { BOT_TOKEN, CHANNEL_ID, GROUP_ID } = process.env;
 
@@ -31,7 +31,7 @@ const app = express();
 app.use(express.json());
 app.use(webhookCallback(bot, "express"));
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (req, res) => {
   res.send("Bot is running!");
 });
 
