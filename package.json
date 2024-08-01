@@ -1,0 +1,19 @@
+{
+  "name": "forward_bot",
+  "description": "Forwards bot from a channel to group",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun app.ts",
+    "dev": "bun --watch app.ts"
+  },
+  "dependencies": {
+    "grammy": "^1.28.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
