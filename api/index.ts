@@ -24,20 +24,13 @@ bot.on("channel_post", async (ctx) => {
         `Forwarded message ${ctx.msg.message_id} from channel to group`
       );
     } catch (error) {
+      await ctx.forwardMessage(GROUP_ID);
       console.error(`Failed to forward message: ${error}`);
     }
   } else {
     console.log(`Message from another channel: ${ctx.chat?.username}`);
   }
 });
-
-async function run() {
-  await bot.api.setWebhook(
-    "https://telegram-forward-from-channel-to-group.vercel.app/"
-  );
-}
-
-run();
 
 const app = express();
 app.use(express.json());
