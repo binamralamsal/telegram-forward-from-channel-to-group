@@ -14,6 +14,7 @@ if (!BOT_TOKEN || !CHANNEL_ID || !GROUP_ID) {
 const bot = new Bot(BOT_TOKEN);
 
 bot.on("channel_post", async (ctx) => {
+  console.log(ctx);
   if (ctx.chat && ctx.chat.id === parseInt(CHANNEL_ID)) {
     try {
       await ctx.copyMessage(GROUP_ID);
