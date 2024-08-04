@@ -31,9 +31,13 @@ bot.on("channel_post", async (ctx) => {
   }
 });
 
-await bot.api.setWebhook(
-  "https://telegram-forward-from-channel-to-group.vercel.app/"
-);
+async function run() {
+  await bot.api.setWebhook(
+    "https://telegram-forward-from-channel-to-group.vercel.app/"
+  );
+}
+
+run();
 
 const app = express();
 app.use(express.json());
