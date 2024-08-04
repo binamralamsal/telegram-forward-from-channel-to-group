@@ -13,6 +13,8 @@ if (!BOT_TOKEN || !CHANNEL_ID || !GROUP_ID) {
 
 const bot = new Bot(BOT_TOKEN);
 
+bot.command("start", (ctx) => ctx.reply("Hello"));
+
 bot.on("channel_post", async (ctx) => {
   console.log(ctx);
   if (ctx.chat && ctx.chat.id === parseInt(CHANNEL_ID)) {
