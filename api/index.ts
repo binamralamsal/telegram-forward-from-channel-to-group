@@ -16,7 +16,6 @@ const bot = new Bot(BOT_TOKEN);
 bot.command("start", (ctx) => ctx.reply("Hello"));
 
 bot.on("channel_post", async (ctx) => {
-  console.log(ctx);
   if (ctx.chat && ctx.chat.id === parseInt(CHANNEL_ID)) {
     try {
       await ctx.copyMessage(GROUP_ID);
@@ -31,6 +30,13 @@ bot.on("channel_post", async (ctx) => {
     console.log(`Message from another channel: ${ctx.chat?.username}`);
   }
 });
+
+if (process.env.NODE_ENV === "development") {
+  bot.start({
+    onStart: () => console.log("Bot started"),
+    drop_pending_updates: true,
+  });
+}
 
 const app = express();
 app.use(express.json());

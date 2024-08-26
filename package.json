@@ -2,7 +2,8 @@
   "name": "forward_bot",
   "description": "Forwards bot from a channel to group",
   "scripts": {
-    "start": "node api/app.js"
+    "start": "node api/app.js",
+    "dev": "bun --watch api/index.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
